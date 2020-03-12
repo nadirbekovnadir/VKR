@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-03-12T13:20:45
+# Project created by QtCreator 2020-03-05T14:33:08
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = VKR
+TARGET = VKR1-0
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,10 +26,18 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        map.cpp \
+        obstacle.cpp \
+        pathfinderalgorithms.cpp \
+        vehicle.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        map.h \
+        obstacle.h \
+        pathfinderalgorithms.h \
+        vehicle.h
 
 FORMS += \
         mainwindow.ui

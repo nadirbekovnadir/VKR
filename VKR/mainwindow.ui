@@ -1,24 +1,1189 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow" >
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1920</width>
+    <height>1200</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="font">
+   <font>
+    <pointsize>14</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(42, 42, 42);</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="Map" name="map" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <item>
+       <widget class="QLabel" name="label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(240, 240, 240);</string>
+        </property>
+        <property name="text">
+         <string>Добавление препятствия на карту:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_10">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);</string>
+            </property>
+            <property name="text">
+             <string>Форма:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cb_obstacleForm">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+            <property name="insertPolicy">
+             <enum>QComboBox::InsertAtBottom</enum>
+            </property>
+            <item>
+             <property name="text">
+              <string>Стена</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Квадрат</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Круг</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_11">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);</string>
+            </property>
+            <property name="text">
+             <string>Размер:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDoubleSpinBox" name="dsb_obstacleScale">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+            <property name="decimals">
+             <number>2</number>
+            </property>
+            <property name="minimum">
+             <double>0.250000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>4.000000000000000</double>
+            </property>
+            <property name="singleStep">
+             <double>0.250000000000000</double>
+            </property>
+            <property name="value">
+             <double>1.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);</string>
+            </property>
+            <property name="text">
+             <string>Угол:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="le_obstacleRotation">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+            <property name="text">
+             <string>0</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_addObstacle">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">#btn_addObstacle
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_addObstacle:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+        </property>
+        <property name="text">
+         <string>Добавить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QPushButton" name="btn_deleteObstacle">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_deleteObstacle
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_deleteObstacle:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Удалить</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_deleteAllObstacles">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>30</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_deleteAllObstacles
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_deleteAllObstacles:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Удалить все</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(240, 240, 240);</string>
+        </property>
+        <property name="text">
+         <string>Параметры построения маршрута:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">color: rgb(240, 240, 240);</string>
+          </property>
+          <property name="text">
+           <string>Шаг сетки:</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="sb_GridStep">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>131</width>
+              <height>0</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="minimum">
+             <number>5</number>
+            </property>
+            <property name="maximum">
+             <number>30</number>
+            </property>
+            <property name="singleStep">
+             <number>5</number>
+            </property>
+            <property name="value">
+             <number>10</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(240, 240, 240);</string>
+        </property>
+        <property name="text">
+         <string>Источник данных:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QPushButton" name="btn_dataFromVehicle">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#btn_dataFromVehicle
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_dataFromVehicle:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+            </property>
+            <property name="text">
+             <string>С аппарата</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+	</string>
+            </property>
+            <property name="text">
+             <string>Алгоритм:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cb_VehicleRoutingAlgorithm">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);</string>
+            </property>
+            <property name="text">
+             <string>Дальность обзора:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="le_VehicleSightRange">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);</string>
+            </property>
+            <property name="text">
+             <string>Размер карты:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="le_VehicleMapSize">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Preferred</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QPushButton" name="btn_dataFromCarrier">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#btn_dataFromCarrier
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_dataFromCarrier:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+            </property>
+            <property name="text">
+             <string>С носителя</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_8">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);</string>
+            </property>
+            <property name="text">
+             <string>Алгоритм:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="cb_CarrierRoutingAlgorithm">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>31</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>14</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">color: rgb(240, 240, 240);
+border-color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>140</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="btn_deletePath">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_deletePath
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_deletePath:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Удалить путь</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_deleteAllPaths">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_deleteAllPaths
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_deleteAllPaths:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Удалить все пути</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Preferred</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_9">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(240, 240, 240);
+</string>
+        </property>
+        <property name="text">
+         <string>Управление моделированием:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <item>
+         <widget class="QPushButton" name="btn_routeBuildingStart">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+            <kerning>true</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_routeBuildingStart
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_addObstacle:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Старт</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_routeBuildingStep">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_routeBuildingStep
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_routeBuildingStep:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Шаг</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_routeBuildingPause">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_routeBuildingPause
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_routeBuildingPause:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Пауза</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btn_routeBuildingStop">
+          <property name="font">
+           <font>
+            <pointsize>14</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btn_routeBuildingStop
+{
+color: rgb(240, 240, 240);
+background-color: rgb(42, 42, 42);
+
+border-left: 1px solid rgb(240, 240, 240);
+border-top: 1px solid rgb(240, 240, 240);
+border-bottom: 4px solid qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_routeBuildingStop:pressed
+{
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}</string>
+          </property>
+          <property name="text">
+           <string>Стоп</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1920</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>Map</class>
+   <extends>QWidget</extends>
+   <header>map.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
