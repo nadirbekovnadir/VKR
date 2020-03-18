@@ -103,7 +103,7 @@ int Map::GetResolution()
     return resolution;
 }
 
-QVector<QVector<int> > Map::GetMapDots(QPoint *start, QPoint *finish)
+QVector<QVector<int> > Map::GetMapDots(QPoint &start, QPoint &finish)
 {   
     const QGraphicsScene *map = scene();
 
@@ -137,12 +137,14 @@ QVector<QVector<int> > Map::GetMapDots(QPoint *start, QPoint *finish)
     int finishX = int(finishPoint->x() / resolution);
     int finishY = int(finishPoint->y() / resolution);
 
-    finish = new QPoint(finishX, finishY);
+    finish.setX(finishX);
+    finish.setY(finishY);
 
     int startX = int(auv->pos().x() / resolution);
     int startY = int(auv->pos().y() / resolution);
 
-    start = new QPoint(startX, startY);
+    start.setX(startX);
+    start.setY(startY);
 
     return mapPoints;
 }
@@ -153,11 +155,11 @@ void Map::AddPath(QVector<QPoint> pathPoints, const QColor &color)
         return;
 
     QPainterPath path;
-    path.moveTo(pathPoints[0]);
+    path.moveTo(pathPoints[0].x() * resolution, pathPoints[0].y() * resolution);
 
     for(int i = 1; i < pathPoints.size(); i++)
     {
-        path.lineTo(pathPoints[i]);
+        path.lineTo(pathPoints[i].x() * resolution, pathPoints[i].y() * resolution);
     }
 
     QPen pen(QBrush(color), 3);

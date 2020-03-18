@@ -49,7 +49,7 @@ public:
         passable = 0,
     };
 
-    QVector<QVector<int>> GetMapDots(QPoint *start, QPoint *finish);
+    QVector<QVector<int>> GetMapDots(QPoint &start, QPoint &finish);
 
     QVector<QGraphicsItem*> allPaths;
     void AddPath(QVector<QPoint> path, const QColor &color);
