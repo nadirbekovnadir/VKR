@@ -60,7 +60,13 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
     QVector<QVector<int>> map = ui->map->GetMapDots(start, finish);
 
     QVector<QPoint> path;
+
+    QElapsedTimer timer;
+    timer.start();
+
     A_Star::CreatePath(map, start, finish, path);
+
+    qDebug() << timer.elapsed();
 
     ui->map->AddPath(path, Qt::white);
 }
