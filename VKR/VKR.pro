@@ -25,18 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        Algorithms/a_star.cpp \
         main.cpp \
         mainwindow.cpp \
         map.cpp \
         obstacle.cpp \
-        pathfinderalgorithms.cpp \
         vehicle.cpp
 
 HEADERS += \
+        Algorithms/a_star.h \
         mainwindow.h \
         map.h \
         obstacle.h \
-        pathfinderalgorithms.h \
         vehicle.h
 
 FORMS += \
