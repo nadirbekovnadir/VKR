@@ -4,6 +4,7 @@
 #include <QVector>
 #include <QPoint>
 #include <Algorithms/a_star.h>
+#include <Algorithms/li.h>
 
 
 MainWindow::MainWindow(QWidget *parent) :

@@ -44,9 +44,9 @@ public:
 public:
     enum DotType
     {
-        unknown = -2,
-        obstacle = -1,
-        passable = 0,
+        unknown = -12,
+        obstacle = -11,
+        passable = -10,
     };
 
     QVector<QVector<int>> GetMapDots(QPoint &start, QPoint &finish);

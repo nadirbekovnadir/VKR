@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         Algorithms/a_star.cpp \
+        Algorithms/li.cpp \
         main.cpp \
         mainwindow.cpp \
         map.cpp \
@@ -34,6 +35,7 @@ SOURCES += \
 
 HEADERS += \
         Algorithms/a_star.h \
+        Algorithms/li.h \
         mainwindow.h \
         map.h \
         obstacle.h \
