@@ -572,10 +572,27 @@ border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, sto
 
 	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
 	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_dataFromVehicle:checked
+{
+	background-color: rgb(62, 62, 62);
+
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
 }</string>
             </property>
             <property name="text">
              <string>С аппарата</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -812,10 +829,30 @@ border-right: 4px solid  qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, sto
 
 	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
 	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
+}
+
+#btn_dataFromCarrier:checked
+{
+	background-color: rgb(62, 62, 62);
+
+	border-color:  rgb(240, 240, 240);
+	border-width: 1px;
+
+	border-left: 4px solid qlineargradient(spread:pad, x1:1, y1:0, x2:0, y2:0, stop:0 rgb(240, 240, 		240,), stop:1 rgb(42, 42, 42));
+	border-top: 4px solid  qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgb(240, 240, 	240,), stop:1 rgb(42, 42, 42));
 }</string>
             </property>
             <property name="text">
              <string>С носителя</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -881,6 +918,16 @@ background-color: rgb(42, 42, 42);
 
 </string>
             </property>
+            <item>
+             <property name="text">
+              <string>Дийкстры</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Ли</string>
+             </property>
+            </item>
            </widget>
           </item>
           <item>

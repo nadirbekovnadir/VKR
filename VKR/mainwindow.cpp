@@ -65,7 +65,23 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
     QElapsedTimer timer;
     timer.start();
 
-    A_Star::CreatePath(map, start, finish, path);
+    QString currentAlgorihm;
+
+    if (ui->btn_dataFromVehicle->isChecked())
+    {
+        currentAlgorihm = ui->cb_VehicleRoutingAlgorithm->currentText();
+    }
+
+    if (ui->btn_dataFromCarrier->isChecked())
+    {
+        currentAlgorihm = ui->cb_CarrierRoutingAlgorithm->currentText();
+
+        if (currentAlgorihm == "Ли")
+            Li::CreatePath(map, start, finish, path);
+
+        if (currentAlgorihm == "Дийкстры")
+            A_Star::CreatePath(map, start, finish, path);
+    }
 
     qDebug() << timer.elapsed();
 
