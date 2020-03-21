@@ -66,6 +66,7 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
     timer.start();
 
     QString currentAlgorihm;
+    QColor color = Qt::white;
 
     if (ui->btn_dataFromVehicle->isChecked())
     {
@@ -77,15 +78,21 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
         currentAlgorihm = ui->cb_CarrierRoutingAlgorithm->currentText();
 
         if (currentAlgorihm == "Ли")
+        {
             Li::CreatePath(map, start, finish, path);
+            color = Qt::white;
+        }
 
         if (currentAlgorihm == "Дийкстры")
+        {
             A_Star::CreatePath(map, start, finish, path);
+            color = Qt::lightGray;
+        }
     }
 
     qDebug() << timer.elapsed();
 
-    ui->map->AddPath(path, Qt::white);
+    ui->map->AddPath(path, color);
 }
 
 void MainWindow::on_btn_deletePath_clicked()

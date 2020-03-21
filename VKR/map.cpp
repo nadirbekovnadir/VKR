@@ -124,16 +124,17 @@ QVector<QVector<int> > Map::GetMapDots(QPoint &start, QPoint &finish)
             QRect rect(x * resolution  - resolution / 2, y * resolution - resolution/ 2, resolution, resolution);
             items = map->items(rect);
 
-//            if (items.size() == 0)
-//            {
+//            if (items.size() != 0 && items[0]->type() == Obstacle::Type)
+//                mapPoints[x][y] = DotType::obstacle;
+//            else
 //                mapPoints[x][y] = DotType::passable;
-//                continue;
-//            }
 
-            if (items.size() != 0 && items[0]->type() == Obstacle::Type)
-                mapPoints[x][y] = DotType::obstacle;
-            else
-                mapPoints[x][y] = DotType::passable;
+            mapPoints[x][y] = DotType::passable;
+            for (auto iter = items.begin(); iter != items.end(); iter++)
+            {
+                if ((*iter)->type() == Obstacle::Type)
+                    mapPoints[x][y] = DotType::obstacle;
+            }
         }
 
     int finishX = int(finishPoint->x() / resolution);
