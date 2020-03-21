@@ -23,8 +23,8 @@ bool Li::CreatePath(const QVector<QVector<int> > &map, const QPoint &startP, con
 
     int x, y, d, k;
 
-    const int dx[8] = {0, 1, 1, 1, 0, -1, -1, -1};
-    const int dy[8] = {-1, -1, 0, 1, 1, 1, 0, -1};
+    const int dx[8] = {0, 1, 0, -1, -1, 1, 1, -1};
+    const int dy[8] = {-1, 0, 1, 0, -1, -1, 1, 1};
 
     int ix;
     int iy;
