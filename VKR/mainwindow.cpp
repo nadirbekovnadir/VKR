@@ -62,8 +62,8 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
 
     QVector<QPoint> path;
 
-    QElapsedTimer timer;
-    timer.start();
+    //QElapsedTimer timer;
+    //timer.start();
 
     QString currentAlgorihm;
     QColor color = Qt::white;
@@ -90,7 +90,7 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
         }
     }
 
-    qDebug() << timer.elapsed();
+    //qDebug() << timer.elapsed();
 
     ui->map->AddPath(path, color);
 }

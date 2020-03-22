@@ -56,21 +56,6 @@ public:
     void DeleteSelectedPath();
     void DeleteAllPaths();
 
-private:
-    QChart *discreteMap;
-    QScatterSeries *unknownPointsSeries;
-    QScatterSeries *obstaclePointsSeries;
-    QScatterSeries *passablePointsSeries;
-    void CreateDiscreteMap();
-
-    void RemoveSeries();
-    void AddSeries();
-
-    int fillingStep = 2;
-    void FillDiscreteMap();
-public:
-    void UpdateDiscreteMap(const QVector<QVector<int>> &mapPoints);
-
 };
 
 #endif // MAP_H
