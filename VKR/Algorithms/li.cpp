@@ -1,13 +1,19 @@
 #include "li.h"
 #include "map.h"
+#include <QElapsedTimer>
 
 Li::Li()
 {
 
 }
 
+qint64 Li::wastedTime;
+
 bool Li::CreatePath(const QVector<QVector<int> > &map, const QPoint &startP, const QPoint &stopP, QVector<QPoint> &path)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     QVector<QVector<int>> grid = map;
 
     int mapWidth = grid.size();
@@ -59,7 +65,11 @@ bool Li::CreatePath(const QVector<QVector<int> > &map, const QPoint &startP, con
     while (!isMarked && grid[stop.x][stop.y] < 0);
 
     if (grid[stop.x][stop.y] < 0)
+    {
+        wastedTime = timer.elapsed();
+
         return false;
+    }
 
 
 
@@ -90,6 +100,8 @@ bool Li::CreatePath(const QVector<QVector<int> > &map, const QPoint &startP, con
     }
 
     path.append(QPoint(start.x, start.y));
+
+    wastedTime = timer.elapsed();
 
     return true;
 }

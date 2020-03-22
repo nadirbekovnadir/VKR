@@ -3,9 +3,7 @@
 
 #include <QPoint>
 #include <QVector>
-//#include <QMap>
 #include <QList>
-
 #include <queue>
 
 using namespace std;
@@ -72,6 +70,8 @@ public:
         inOpened = 11,
         undefined = 12,
     };
+public:
+    static qint64 wastedTime;
 
 private:
     static QVector<QVector<int>> map;

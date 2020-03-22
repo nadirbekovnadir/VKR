@@ -62,11 +62,10 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
 
     QVector<QPoint> path;
 
-    //QElapsedTimer timer;
-    //timer.start();
-
     QString currentAlgorihm;
     QColor color = Qt::white;
+
+    qint64 wastedTime = -1;
 
     if (ui->btn_dataFromVehicle->isChecked())
     {
@@ -81,17 +80,18 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
         {
             Li::CreatePath(map, start, finish, path);
             color = Qt::white;
+            wastedTime = Li::wastedTime;
         }
 
         if (currentAlgorihm == "Дийкстры")
         {
             A_Star::CreatePath(map, start, finish, path);
             color = Qt::lightGray;
+            wastedTime = A_Star::wastedTime;
         }
     }
 
-    //qDebug() << timer.elapsed();
-
+    ui->l_wastedTime->setText(QString::number(wastedTime));
     ui->map->AddPath(path, color);
 }
 

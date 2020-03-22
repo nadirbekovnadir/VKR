@@ -1,11 +1,14 @@
 #include "a_star.h"
 #include <QtMath>
 #include "map.h"
+#include <QElapsedTimer>
 
 A_Star::A_Star()
 {
 
 }
+
+qint64 A_Star::wastedTime = 0;
 
 QVector<QVector<int>> A_Star::map;
 
@@ -19,6 +22,9 @@ QVector<A_Star::PointNode> A_Star::neighbors;
 
 bool A_Star::CreatePath(const QVector<QVector<int>> &map, const QPoint &startP, const QPoint &stopP, QVector<QPoint> &path)
 {
+    QElapsedTimer timer;
+    timer.start();
+
     A_Star::map = map;
 
     start.SetXY(startP.x(), startP.y());
@@ -48,6 +54,9 @@ bool A_Star::CreatePath(const QVector<QVector<int>> &map, const QPoint &startP, 
         {
             finish = current;
             path = ReconstructPath();
+
+            wastedTime = timer.elapsed();
+
             return true;
         }
 
@@ -91,12 +100,14 @@ bool A_Star::CreatePath(const QVector<QVector<int>> &map, const QPoint &startP, 
 
     }
 
-    return true;
+    wastedTime = timer.elapsed();
+
+    return false;
 }
 
 double A_Star::DistanceBetween(const A_Star::PointNode &first, const A_Star::PointNode &second)
 {
-    return qSqrt(qPow(first.x - second.x, 2) + qPow(first.y - second.y, 2));
+    return qAbs(first.x - second.x) + qAbs(first.y - second.y);
 }
 
 double A_Star::Heuristic(const A_Star::PointNode &p)
