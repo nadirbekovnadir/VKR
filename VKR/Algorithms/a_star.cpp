@@ -112,7 +112,7 @@ void A_Star::GetNeighbors(const PointNode &p)
     for (int x = p.x - 1; x <= p.x + 1; x++)
         for (int y = p.y - 1; y <= p.y + 1; y++)
         {
-            if (x < 0 || y < 0 || x > map.size() || y > map[0].size())
+            if (x < 0 || y < 0 || x >= map.size() || y >= map[0].size())
                 continue;
 
             pointType = map[x][y];
