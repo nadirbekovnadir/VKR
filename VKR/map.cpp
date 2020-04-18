@@ -38,7 +38,7 @@ void Map::SceneInit()
     auv = new Vehicle();
     scene()->addItem(auv);
 
-    auv->setPos(100, 100);
+    auv->SetCoordinates(100, 100);
 }
 
 void Map::CreateFinishPoint(int x, int y)

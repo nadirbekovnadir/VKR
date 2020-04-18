@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui charts
+QT       += core gui charts network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,21 +25,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        AUV/rov_model.cpp \
+        AUV/su_rov.cpp \
+        AUV/vehicle.cpp \
         Algorithms/a_star.cpp \
         Algorithms/li.cpp \
+        kx_pult/configdata.cpp \
+        kx_pult/kx_protocol.cpp \
+        kx_pult/qkx_coeffs.cpp \
+        kx_pult/qpiconfig.cpp \
         main.cpp \
         mainwindow.cpp \
         map.cpp \
-        obstacle.cpp \
-        vehicle.cpp
+        obstacle.cpp
 
 HEADERS += \
+        AUV/rov_model.h \
+        AUV/su_rov.h \
+        AUV/vehicle.h \
         Algorithms/a_star.h \
         Algorithms/li.h \
+        kx_pult/configdata.h \
+        kx_pult/kx_protocol.h \
+        kx_pult/qkx_coeffs.h \
+        kx_pult/qpiconfig.h \
         mainwindow.h \
         map.h \
-        obstacle.h \
-        vehicle.h
+        obstacle.h
 
 FORMS += \
         mainwindow.ui

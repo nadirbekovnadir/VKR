@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <Algorithms/a_star.h>
 #include <Algorithms/li.h>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -108,4 +109,17 @@ void MainWindow::on_btn_deleteAllPaths_clicked()
 void MainWindow::on_sb_GridStep_valueChanged(int arg1)
 {
     ui->map->SetResolution(arg1);
+}
+
+void MainWindow::on_btn_routeBuildingStep_clicked()
+{
+//    ui->map->auv->UpdateSonarData();
+//    double *d = ui->map->auv->sonar_data;
+
+//    for (int i = 0; i < Vehicle::sonar_numberOfBeams; i++)
+//    {
+//        qDebug() << *(d + i);
+//    }
+
+    ui->map->auv->ROV->addKurs();
 }

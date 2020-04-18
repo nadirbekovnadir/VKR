@@ -30,6 +30,8 @@ private slots:
 
     void on_sb_GridStep_valueChanged(int arg1);
 
+    void on_btn_routeBuildingStep_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
