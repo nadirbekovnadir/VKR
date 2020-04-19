@@ -22,10 +22,14 @@ x_protocol::~x_protocol()
     QPIConfig conf(config, QIODevice::ReadOnly);
     QPIConfig::Entry & e(conf.getValue(name));
 
-    ip_Pult = QHostAddress(e.getValue("sender.ip").value());
-    //ip_k = e.getValue("sender.ip").value();
-    port_Pult = e.getValue("sender.port", 0).value().toInt();
-    port_ROV = e.getValue("receiver.port", 0).value().toInt();
+//    ip_Pult = QHostAddress(e.getValue("sender.ip").value());
+//    //ip_k = e.getValue("sender.ip").value();
+//    port_Pult = e.getValue("sender.port", 0).value().toInt();
+//    port_ROV = e.getValue("receiver.port", 0).value().toInt();
+
+    ip_Pult = QHostAddress("127.0.0.1");
+    port_Pult = 4013;
+    port_ROV = 4012;
 
     qDebug() << "ip Pult" << ip_Pult;
     qDebug() << "port_Pult" << port_Pult;
@@ -33,13 +37,16 @@ x_protocol::~x_protocol()
 
     x_vnutri  = _x;
 
-    x_count   = e.getValue("count",0).value().toInt();                         //_x_count);
+    //x_count   = e.getValue("count",0).value().toInt();                         //_x_count);
+    x_count = 2000;
+
     qDebug()  << "count" << x_count;
     packets_received = 0;
     packets_lost = 0;
     packets_sent = 0;
 
-    frequency_Pult = e.getValue("sender.frequency",0).value().toFloat();    //20. Hz
+    //frequency_Pult = e.getValue("sender.frequency",0).value().toFloat();    //20. Hz
+    frequency_Pult = 20;
 
     for (int i=0; i<X_NUM; i++)
          x_index.x_num[i] = -1;
@@ -56,10 +63,14 @@ x_protocol::~x_protocol()
 
     connect(ReceiveFromKXnotebook, &QUdpSocket::readyRead,this, &x_protocol::readdata);
 
-    x_value.type = e.getValue("type");                 //MSG_X
-    x_value.addr_to = e.getValue("addr_pult");         // X_FROM_BORT;
+//    x_value.type = e.getValue("type");                 //MSG_X
+//    x_value.addr_to = e.getValue("addr_pult");         // X_FROM_BORT;
 
-    addr_from = e.getValue("addr_x", 0x0A);
+//    addr_from = e.getValue("addr_x", 0x0A);
+
+    x_value.type = 0xAA;
+    x_value.addr_to = 0x0B;
+    addr_from = 0x0A;
 
     qDebug() <<"x_value.type" << x_value.type;
     qDebug() <<"x_value.addr_to" << x_value.addr_to;

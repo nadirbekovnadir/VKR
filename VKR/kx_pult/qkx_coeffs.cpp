@@ -8,14 +8,25 @@ Qkx_coeffs::Qkx_coeffs(const QString & config, const QString & name, bool _pult,
     QPIConfig conf(config, QIODevice::ReadOnly);
     QPIConfig::Entry & e(conf.getValue(name));
     k_protocol=NULL;
-    fname = e.getValue("file", "k.dat").value(); //k.dat
-    ip_pult = e.getValue("sender.ip").value();
-    ip_k = e.getValue("receiver.ip").value();
-    port_pult = e.getValue("sender.port", 0);
-    port_k = e.getValue("receiver.port", 0);
-    to_k.type = from_k.type = e.getValue("type", 0xA);
-    to_k.addr_to = e.getValue("addr_k", 0x15);
-    from_k.addr_to = e.getValue("addr_pult", 0x75);
+//    fname = e.getValue("file", "k.dat").value(); //k.dat
+//    ip_pult = e.getValue("sender.ip").value();
+//    ip_k = e.getValue("receiver.ip").value();
+//    port_pult = e.getValue("sender.port", 0);
+//    port_k = e.getValue("receiver.port", 0);
+//    to_k.type = from_k.type = e.getValue("type", 0xA);
+//    to_k.addr_to = e.getValue("addr_k", 0x15);
+//    from_k.addr_to = e.getValue("addr_pult", 0x75);
+
+
+    fname = "k.dat";
+    ip_pult = "127.0.0.1";
+    ip_k = "127.0.0.1";
+    port_pult = 4014;
+    port_k = 4015;
+    to_k.type = from_k.type = 0xBB;
+    to_k.addr_to = 0x1A;
+    from_k.addr_to = 0x1B;
+
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), SLOT(tick()));
 
@@ -26,7 +37,9 @@ Qkx_coeffs::Qkx_coeffs(const QString & config, const QString & name, bool _pult,
     qDebug() << "from_k.addr_to" << from_k.addr_to;
 
     readCoeffs();
-    int ns = piMaxi(conf.getValue(name).getValue("count", 0), K.size());
+    //int ns = piMaxi(conf.getValue(name).getValue("count", 0), K.size());
+    int ns = piMaxi(1000, K.size());
+
     if (ns > K.size()) {
         K.resize(ns);
         while (formulas.size() < ns) formulas.append("");

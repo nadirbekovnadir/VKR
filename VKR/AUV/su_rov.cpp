@@ -7,6 +7,8 @@ SU_ROV::SU_ROV(QObject *parent) : QObject(parent)
     K_Protocol = new Qkx_coeffs("protocols.conf", "ki");
     X_Protocol = new x_protocol ("protocols.conf","xi",X);
     model = new ROV_Model ();
+
+    X[41][0] = 0; // Начальное значение курса равно нулю
     //if (K[1]>0) T=K[1];
     /*else*/ T=0.01;
     time.start(T*1000);//запуск проводим в мсек
@@ -30,10 +32,12 @@ void SU_ROV::tick()
 
 void SU_ROV::addKurs()
 {
-    X[1][0]++;
+    qDebug() << "Course before changes: " << X[41][0];
+    X[41][0]++;
+    qDebug() << "Course after changes: " << X[41][0];
 }
 void SU_ROV::decKurs(){
-    X[1][0]--;
+    X[41][0]--;
 }
 
 void SU_ROV::changeMode(int btn, bool state)
@@ -74,7 +78,7 @@ void SU_ROV::BFS_DRK(double Upsi, double Uteta, double Ux, double Uy){
 void SU_ROV::Control_Kurs()
 {
 
-    X[41][0]=K[20]; //INFO: заданный курс для отладки через kx-pult
+    //X[41][0]=K[20]; //INFO: заданный курс для отладки через kx-pult
     X[43][0]=X[41][0]-X[42][0];
     X[44][0]=X[43][0]*K[44];
 
