@@ -29,6 +29,7 @@ SOURCES += \
         AUV/su_rov.cpp \
         AUV/vehicle.cpp \
         Algorithms/a_star.cpp \
+        Algorithms/d_lite.cpp \
         Algorithms/li.cpp \
         kx_pult/configdata.cpp \
         kx_pult/kx_protocol.cpp \
@@ -44,6 +45,8 @@ HEADERS += \
         AUV/su_rov.h \
         AUV/vehicle.h \
         Algorithms/a_star.h \
+        Algorithms/custom_priority_queue.h \
+        Algorithms/d_lite.h \
         Algorithms/li.h \
         kx_pult/configdata.h \
         kx_pult/kx_protocol.h \
