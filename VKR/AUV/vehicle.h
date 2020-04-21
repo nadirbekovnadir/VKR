@@ -1,13 +1,17 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
+#include <QObject>
+
 #include <QGraphicsItem>
 #include <QPolygon>
 #include <QGraphicsScene>
 #include <AUV/su_rov.h>
 
-class Vehicle : public QGraphicsItem
+class Vehicle : public QObject, public QGraphicsItem
 {
+    Q_OBJECT
+
 public:
     SU_ROV *ROV;
 
@@ -37,13 +41,19 @@ public:
     void UpdateSonarData();
 
 public:
-    void UpdateCourseAngle(double angle);
+    void SetCourseAngle(double angle);
     void MoveForward(double speed);
+
+    void MoveToPoint(double x, double y);
+
+private slots:
+    void UpdateDataFromROV();
 
 private:
     QGraphicsScene *map = nullptr;
 public:
-    Vehicle();
+    explicit Vehicle();
+    virtual ~Vehicle();
 
 private:
     QPolygon form;

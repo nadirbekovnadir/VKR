@@ -121,5 +121,8 @@ void MainWindow::on_btn_routeBuildingStep_clicked()
 //        qDebug() << *(d + i);
 //    }
 
-    ui->map->auv->ROV->addKurs();
+    //ui->map->auv->SetCourseAngle(90);
+    //ui->map->auv->MoveForward(5);
+
+    ui->map->auv->MoveToPoint(10, 10);
 }

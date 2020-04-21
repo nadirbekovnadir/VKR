@@ -14,7 +14,9 @@ void Vehicle::SetCoordinates(double x, double y)
 {
     this->setPos(x, y);
     coordinates.x = x;
-    coordinates.y = y;
+    coordinates.y = y; //why?
+
+    ROV->setInitialPosition(x, y);
 }
 
 void Vehicle::UpdateSonarData()
@@ -72,9 +74,29 @@ void Vehicle::UpdateSonarData()
     }
 }
 
-void Vehicle::UpdateCourseAngle(double angle)
+void Vehicle::SetCourseAngle(double angle)
 {
-    //ROV->setKurs(angle);
+    ROV->setKurs(angle);
+}
+
+void Vehicle::MoveForward(double speed)
+{
+    ROV->setMarshSpeed(speed);
+}
+
+void Vehicle::MoveToPoint(double x, double y)
+{
+    ROV->setFollowPoint(x, y);
+    ROV->enableFollowMod();
+    ROV->setMarshSpeed(100);
+}
+
+void Vehicle::UpdateDataFromROV()
+{
+    this->setRotation(X[42][0]);
+
+    this->setX(X[35][0]);
+    this->setY(X[37][0]);
 }
 
 Vehicle::Vehicle()
@@ -86,6 +108,12 @@ Vehicle::Vehicle()
          << QPoint(-15, 10);
 
     ROV = new SU_ROV();
+    connect(ROV, SIGNAL(DataChanged()), (QObject*)this, SLOT(UpdateDataFromROV()));
+}
+
+Vehicle::~Vehicle()
+{
+
 }
 
 QRectF Vehicle::boundingRect() const

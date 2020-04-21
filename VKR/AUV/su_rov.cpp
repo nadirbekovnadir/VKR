@@ -1,4 +1,5 @@
 #include "AUV/su_rov.h"
+#include <QtMath>
 
 double X[2000][2];
 
@@ -9,11 +10,12 @@ SU_ROV::SU_ROV(QObject *parent) : QObject(parent)
     model = new ROV_Model ();
 
     X[41][0] = 0; // Начальное значение курса равно нулю
+    X[9][0] = 0;
+
     //if (K[1]>0) T=K[1];
     /*else*/ T=0.01;
     time.start(T*1000);//запуск проводим в мсек
     connect (&time, SIGNAL(timeout()), SLOT(tick()));
-
 }
 
 
@@ -21,9 +23,17 @@ SU_ROV::SU_ROV(QObject *parent) : QObject(parent)
 void SU_ROV::tick()
 {
     get_data_from_model();
+
+    if (isFollowMod)
+        CourseOnPoint();
     Control_Kurs();
-    BFS_DRK(X[49][0], X[9][0],0,0);
-    model->tick(X[22][0], X[23][0], X[24][0], X[25][0], T);;
+    Control_Marsh();
+    BFS_DRK(X[49][0], 0, X[9][0],0);
+    //BFS_DRK(0, 1, 0, 0);
+
+    model->tick(X[22][0], X[23][0], X[24][0], X[25][0], T);
+
+    emit DataChanged();
 }
 
 
@@ -40,10 +50,47 @@ void SU_ROV::decKurs(){
     X[41][0]--;
 }
 
+void SU_ROV::setKurs(double angle)
+{
+    X[41][0] = angle;
+}
+
+void SU_ROV::setMarshSpeed(double value)
+{
+    X[9][0] = value;
+}
+
 void SU_ROV::changeMode(int btn, bool state)
 {
     if (btn==Automatiz && state) mode=Automatiz;
     else mode=Ruchnoi;
+}
+
+void SU_ROV::setInitialPosition(double x, double z)
+{
+    //X[35][0] = x;
+    //X[37][0] = z;
+}
+
+void SU_ROV::setFollowPoint(double x, double z)
+{
+    followX = x;
+    followZ = z;
+}
+
+void SU_ROV::enableFollowMod()
+{
+    isFollowMod = true;
+}
+
+void SU_ROV::disableFollowMod()
+{
+    isFollowMod = false;
+}
+
+float SU_ROV::getDeltaT()
+{
+    return T;
 }
 
 
@@ -122,6 +169,28 @@ void SU_ROV::Control_Depth(){
         X[69][0]=X[63][0]+K[65]*X[60][0];
         X[77][0]=X[69][0]-X[68][0];
         X[70][0]=saturation(X[77][0],K[63]);
+}
+
+void SU_ROV::CourseOnPoint()
+{
+    double deltaX = followX - X[35][0];
+    double deltaZ = followZ - X[37][0];
+
+    if (deltaZ < __DBL_EPSILON__)
+    {
+        disableFollowMod();
+        return;
+    }
+
+    if (qPow(deltaX, 2) + qPow(deltaZ, 2) < 0.01)
+    {
+        disableFollowMod();
+        return;
+    }
+
+    X[41][0] = qAtan(deltaZ / deltaX) / M_PI * 180;
+    if (deltaZ < 0)
+        X[41][0] *= -1;
 }
 
 float SU_ROV::saturation(float input, float max) {

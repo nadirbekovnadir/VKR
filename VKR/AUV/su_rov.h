@@ -17,12 +17,26 @@ public:
     explicit SU_ROV(QObject *parent = nullptr);
 
 signals:
+    void DataChanged();
+
+public:
+    double followX = 0, followZ = 0;
+    bool isFollowMod = false;
 
 public slots:
     void tick();
     void addKurs();//увеличение заданного курса по кнопке
     void decKurs();//уменьшение заданного курса по кнопке
+    void setKurs(double angle);
+    void setMarshSpeed(double value);
     void changeMode(int btn, bool state);
+
+    void setInitialPosition(double x, double z);
+    void setFollowPoint(double x, double z);
+    void enableFollowMod();
+    void disableFollowMod();
+    float getDeltaT();
+
 private:
     Qkx_coeffs * K_Protocol;
     x_protocol * X_Protocol;
@@ -35,6 +49,9 @@ private:
     void Control_Kren();
     void Control_Different();
     void Control_Depth();
+
+    void CourseOnPoint();
+
     void BFS_DRK(double Upsi, double Uteta, double Ux, double Uy);
     void get_data_from_model();
     int sign(float input){
