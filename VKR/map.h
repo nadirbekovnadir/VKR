@@ -6,7 +6,7 @@
 #include "obstacle.h"
 #include <QVector>
 #include <QGraphicsEllipseItem>
-#include "vehicle.h"
+#include "AUV/vehicle.h"
 #include <QColor>
 #include <QtCharts>
 #include <QChart>
@@ -28,6 +28,7 @@ private:
     QGraphicsEllipseItem *finishPoint;
     void CreateFinishPoint(int x, int y);
 
+public:
     Vehicle *auv;
 
 public:
