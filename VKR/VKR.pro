@@ -30,6 +30,7 @@ SOURCES += \
         AUV/vehicle.cpp \
         Algorithms/a_star.cpp \
         Algorithms/d_lite.cpp \
+        Algorithms/field_d.cpp \
         Algorithms/li.cpp \
         kx_pult/configdata.cpp \
         kx_pult/kx_protocol.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
         Algorithms/a_star.h \
         Algorithms/custom_priority_queue.h \
         Algorithms/d_lite.h \
+        Algorithms/field_d.h \
         Algorithms/li.h \
         kx_pult/configdata.h \
         kx_pult/kx_protocol.h \
