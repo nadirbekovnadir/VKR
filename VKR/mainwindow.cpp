@@ -5,6 +5,7 @@
 #include <QPoint>
 #include <Algorithms/a_star.h>
 #include <Algorithms/li.h>
+#include <Algorithms/d_lite.h>
 #include <QDebug>
 
 
@@ -89,6 +90,17 @@ void MainWindow::on_btn_routeBuildingStart_clicked()
             A_Star::CreatePath(map, start, finish, path);
             color = Qt::lightGray;
             wastedTime = A_Star::wastedTime;
+        }
+
+        if (currentAlgorihm == "D*")
+        {
+            D_Lite::SetMap(map);
+            D_Lite::SetStartPoint(start);
+            D_Lite::SetFinishPoint(finish);
+            D_Lite::ComputeShortestPath();
+            D_Lite::CreatePath(path);
+            D_Lite::Reset();
+            wastedTime = D_Lite::wastedTime;
         }
     }
 

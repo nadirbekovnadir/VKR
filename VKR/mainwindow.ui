@@ -925,6 +925,11 @@ background-color: rgb(42, 42, 42);
             </item>
             <item>
              <property name="text">
+              <string>D*</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
               <string>Ли</string>
              </property>
             </item>

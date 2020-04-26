@@ -5,6 +5,9 @@
 #include <QPoint>
 #include "Algorithms/custom_priority_queue.h"
 
+
+
+
 class D_Lite
 {
 public:
@@ -17,10 +20,12 @@ public:
         int y;
 
         double g;
-        double h;
         double rhs;
 
-        //Add k1 and k2
+        QVector<double> key = {0, 0};
+
+        bool isInU = false;
+        //bool isUpdated = false;
 
         const PointNode *cameFrom = nullptr;
 
@@ -32,7 +37,6 @@ public:
             this->y = node.y;
 
             this->g = node.g;
-            this->h = node.h;
             this->rhs = node.rhs;
 
             this->cameFrom = node.cameFrom;
@@ -41,30 +45,81 @@ public:
         void SetXY(int x, int y) { this->x = x; this->y = y; }
 
         bool operator ==(const PointNode &p) const { return ((this->x == p.x) && (this->y == p.y)); }
-        //bool operator <(const PointNode &p) const { return this->f > p.f; } //Add new <
+        bool operator !=(const PointNode &p) const { return ((this->x != p.x) || (this->y != p.y)); }
+        bool operator <(const PointNode &p) const { return (key[0] < p.key[0]) || (key[0] == p.key[0] && key[1] < p.key[1]); }
+        bool operator >(const PointNode &p) const { return (key[0] > p.key[0]) || (key[0] == p.key[0] && key[1] > p.key[1]); }
+        bool operator <(const QVector<double> &k) const { return (key[0] < k[0]) || (key[0] == k[0] && key[1] < k[1]); }
+        bool operator >(const QVector<double> &k) const { return (key[0] > k[0]) || (key[0] == k[0] && key[1] > k[1]); }
     };
 
+    class MyCompare {
+    public:
+      bool operator()(D_Lite::PointNode *a, D_Lite::PointNode *b)
+      {
+        return (*a) > (*b);
+      }
+    };
+
+    struct Point
+    {
+        int x;
+        int y;
+    };
+
+public:
+    static constexpr double inf = __DBL_MAX__;
+    static constexpr double eps = __DBL_EPSILON__;
+
+    enum PointNodeType
+    {
+        isInU = 0xA0,
+        Reviewed = 0xA1
+    };
+
+    static qint64 wastedTime;
+
 private:
-    static PointNode start;
-    static PointNode finish;
+    static PointNode *start;
+    static PointNode *finish;
+
+    static QPoint startP;
+    static QPoint finishP;
 
     static bool isInitialized;
     static bool isMapUpdated;
+    static bool isUSorted;
 
     static QVector<QVector<int>> map;
-    static custom_priority_queue<PointNode> U;
+    static QVector<QVector<PointNode>> allPointNodes;
 
+    static custom_priority_queue_comparer<PointNode*, MyCompare> U;
+    static QVector<PointNode*> neighbors;
+    static QVector<PointNode*> neighbors_2;
+    //static custom_priority_queue<PointNode> reviewed;
+
+    static double km;
+    
 public:
     static void SetMap(const QVector<QVector<int>> &map);
-    static void SetFinishPoint(QPoint p);
-    static void SetStartPoint(QPoint p);
+    static void SetFinishPoint(const QPoint &p);
+    static void SetStartPoint(const QPoint &p);
     static void UpdateMap();
     static void ComputeShortestPath();
+    static void UpdateVertex(PointNode *v);
     static QPoint MoveToNextPoint();
+    static void CreatePath(QVector<QPoint> &pathPoints);
+    static void Reset();
 private:
     static void Initialize();
-    static void UpdateVertex();
-    static void CalculateKey();
+    static QVector<double> CalculateKey(const D_Lite::PointNode *pn);
+
+    static double H(const PointNode *pn);
+    static double C(const PointNode *pn1, const PointNode *pn2);
+
+    static void GetNeighbors(const PointNode *pn, bool second = false);
+
+    static bool FirstKeyLess(const QVector<double> k1, const QVector<double> k2);
+    static void SortU();
 
 };
 
